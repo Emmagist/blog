@@ -72,6 +72,7 @@
                                 </div>
                             </div> -->
                             <a href="single-page.php" class="nav-item nav-link">News</a>
+                            <a href="single-page.php" class="nav-item nav-link">Politic</a>
                             <a href="music-page.php" class="nav-item nav-link">Music</a>
                             <a href="video-page.php" class="nav-item nav-link">Video</a>
                             <a href="foreignpage.php" class="nav-item nav-link">Foreign Music</a>

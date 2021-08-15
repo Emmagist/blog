@@ -57,7 +57,7 @@
 
         public function getAllCategory(){
             global $db;
-            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "", "9");
+            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "status = '0'", "9");
         }
 
         public function getTechnology(){
@@ -65,8 +65,8 @@
             $rows = [];
             $result = $db->query("SELECT * FROM bloglist
                                     INNER JOIN blog_category 
-                                    ON bloglist.category = blog_category.name 
-                                    WHERE bloglist.category = 'Technology' 
+                                    ON bloglist.category = blog_category.category 
+                                    WHERE bloglist.category = 'technology' AND status = '0' 
                                     ORDER BY RAND() LIMIT 2");
             if (!empty($result)) {
                 while ($row = $result->fetch_assoc()) {
@@ -82,8 +82,8 @@
             $rows = [];
             $result = $db->query("SELECT * FROM bloglist
                                     INNER JOIN blog_category 
-                                    ON bloglist.category = blog_category.name 
-                                    WHERE bloglist.category = 'Sport' 
+                                    ON bloglist.category = blog_category.category 
+                                    WHERE bloglist.category = 'sport' AND status = '0' 
                                     ORDER BY RAND() LIMIT 2");
             if (!empty($result)) {
                 while ($row = $result->fetch_assoc()) {
@@ -98,8 +98,8 @@
             $rows = [];
             $result = $db->query("SELECT * FROM bloglist
                                     INNER JOIN blog_category 
-                                    ON bloglist.category = blog_category.name 
-                                    WHERE bloglist.category = 'Business' 
+                                    ON bloglist.category = blog_category.category 
+                                    WHERE bloglist.category = 'business' AND status = '0' 
                                     ORDER BY RAND() LIMIT 2");
             if (!empty($result)) {
                 while ($row = $result->fetch_assoc()) {
@@ -114,8 +114,8 @@
             $rows = [];
             $result = $db->query("SELECT * FROM bloglist
                                     INNER JOIN blog_category 
-                                    ON bloglist.category = blog_category.name 
-                                    WHERE bloglist.category = 'Entertainment' 
+                                    ON bloglist.category = blog_category.category 
+                                    WHERE bloglist.category = 'entertainment' AND status = '0' 
                                     ORDER BY RAND() LIMIT 2");
             if (!empty($result)) {
                 while ($row = $result->fetch_assoc()) {
@@ -127,29 +127,26 @@
 
         public function getLatest($date){
             global $db;
-            $rows = [];
-            $result = $db->query("SELECT * FROM bloglist
-                                    INNER JOIN blog_category 
-                                    ON bloglist.category = blog_category.name 
-                                    WHERE bloglist.category = 'News'
-                                    AND  bloglist.log = '$date'
-                                    ORDER BY RAND() LIMIT 3");
-            if (!empty($result)) {
-                while ($row = $result->fetch_assoc()) {
-                    $rows[] = $row;
-                }
-                return $rows;
-            }
+
+            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "log = '$date' AND category = 'news'", "3");
+            // $rows = [];
+            // $result = $db->query("SELECT * FROM bloglist
+            //                         INNER JOIN blog_category 
+            //                         ON bloglist.category = blog_category.name 
+            //                         WHERE bloglist.category = 'news'
+            //                         AND  bloglist.log = '$date'
+            //                         ORDER BY RAND() LIMIT 3");
+            // if (!empty($result)) {
+            //     while ($row = $result->fetch_assoc()) {
+            //         $rows[] = $row;
+            //     }
+            //     return $rows;
+            // }
         }
 
-        // public function relatedClasses(){
-        //     global $db;
-        //     return $db->selectRandLimit(TBL_CLASS, "*", "", "4");
-        // }
-
-        public function courseDetails($id){
+        public function readyMore(){
             global $db;
-            return $db->selectData("", "*", "id = '$id'");
+            return $db->selectLimitAsc(TBL_BLOG_LIST, "*", "status = '0'", "title", "10");
         }
 
         public function getAllSchoolsLimited(){
@@ -162,21 +159,17 @@
             return $db->selectLimit("", "*", "class_id = '$id'", "contents", "1");
         }
 
-        public function getTopicByCourseIdLimit($id){
+        public function getViewCounts($ip, $count, $date){
             global $db;
-            return $db->selectLimit("", "*", "class_id = '$id'", "topic", "1");
+            $sql = $db->selectData(TBL_PAGE_COUNT, "*", "ip = '$ip', log = '$date'");
+            if (count($sql) >= 1) {
+                # code...
+            }elseif (count($sql) == 1) {
+                $db->update(TBL_PAGE_COUNT, "ip = '$ip', count = '$count', log = '$date'", "ip = '$ip', log = '$date'");
+            }else {
+                $db->saveData(TBL_PAGE_COUNT, "ip = '$ip', count = '$count', log = '$date'");
+            }
         }
-
-        public function getTitleByTopicId($id){
-            global $db;
-            return $db->selectData("", "*", "topic_id = '$id'");
-        }
-
-        public function getContentsByTopicId($id){
-            global $db;
-            return $db->selectData("", "*", "content_id = '$id'");
-        }
-
     }
     $user = new Users;
 

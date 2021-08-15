@@ -31,8 +31,9 @@
             $rows = [];
                 $fields = trim($field);
                 $where = !empty($conditions) ? "WHERE" : "";
+                
             $result = $this->query("SELECT " . $fields . " FROM " . $table . "  $where " . $conditions);
-            //var_dump($result);exit;
+            // var_dump($result);exit;
             $count = $result->num_rows;
             if ($count > 0) {
               while ($row = $result->fetch_assoc()) {
@@ -98,10 +99,18 @@
 
         public function getLogin($redirect){
             if ($this->getSession('login') == false) {
-                unset($_SESSION["entity_guid"], $_SESSION["email"]);
+                unset($_SESSION["token"], $_SESSION["email"]);
                 session_destroy();
                 header("Location: login.php?page_url=$redirect");
                 // header("Location: login.php");
+            }
+        }
+
+        public function getAdminLogin(){
+            if ($this->getSession('login') == false) {
+                unset($_SESSION["token"],$_SESSION['login']);
+                session_destroy();
+                header("Location: login.php");
             }
         }
 
@@ -201,6 +210,10 @@
                 }
                 return $rows;
             }
+        }
+
+        public function remote_Addr(){
+            return $_SERVER['REMOTE_ADDR'];
         }
     }
     $db = new Database;

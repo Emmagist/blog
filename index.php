@@ -84,9 +84,9 @@
                             <?php foreach ($user->getSport() as $sport) : ?>
                                 <div class="col-md-6">
                                     <div class="cn-img">
-                                        <img src="img/news-350x223-1.jpg" alt="<?=$sport['image']?>"/>
+                                        <img src="<?=str_replace('../../','',$sport['image'])?>" alt=""/ style="height: 150px;">
                                         <div class="cn-title">
-                                            <a href="sport.php?sport=<?=$sport['entity_guid']?>"><?=$sport['title']?></a>
+                                            <a href="sport.php?sport=<?=$sport['entityguid']?>"><?=$sport['title']?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -115,9 +115,9 @@
                             <?php foreach ($user->getTechnology() as $tech) : ?>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" alt="<?=$tech['image']?>"/>
+                                    <img src="<?=str_replace('../../','',$tech['image'])?>" alt=""/>
                                     <div class="cn-title">
-                                        <a href="tech.php?tech=<?=$tech['entity_guid']?>"><?=$tech['title']?></a>
+                                        <a href="tech.php?tech=<?=$tech['entityguid']?>"><?=$tech['title']?></a>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                 <div class="cn-img">
                                     <img src="img/news-350x223-5.jpg" alt="<?=$business['title']?>"/>
                                     <div class="cn-title">
-                                        <a href="business?bsn=<?=$business['entity_guid']?>"><?=$business['title']?></a>
+                                        <a href="business?bsn=<?=$business['entityguid']?>"><?=$business['title']?></a>
                                     </div>
                                 </div>
                             </div>
@@ -179,9 +179,9 @@
                             <?php foreach ($user->getEntertainment() as $ent) : ?>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" alt="<?=$ent['image']?>"/>
+                                    <img src="<?=str_replace('../../','',$ent['image'])?>" alt=""/ style="height: 150px;">
                                     <div class="cn-title">
-                                        <a href="entertain.php?ent=<?=$ent['entity_guid']?>"><?=$ent['title']?></a>
+                                        <a href="entertain.php?ent=<?=$ent['entityguid']?>"><?=$ent['title']?></a>
                                     </div>
                                 </div>
                             </div>
@@ -216,35 +216,29 @@
                     <div class="col-md-6">
                         <ul class="nav nav-pills nav-justified">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#featured">Featured News</a>
+                                <a class="nav-link active" data-toggle="pill" href="#latest">Latest News</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="pill" href="#popular">Popular News</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#latest">Latest News</a>
+                            <a class="nav-link" data-toggle="pill" href="#featured">Featured News</a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
-                            <div id="featured" class="container tab-pane active">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
+                            <div id="latest" class="container tab-pane active">
+                                <?php $date = date("Y-m-d"); foreach ($user->getLatest($date) as $log) :?>
+                                    <div class="tn-news">
+                                        <div class="tn-img">
+                                            <img src="<?=str_replace('../../','',$log['image'])?>" />
+                                        </div>
+                                        <div class="tn-title">
+                                            <a href="news-page.php"><?=$log['title']?></a>
+                                        </div>
                                     </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
+                                <?php endforeach; ?>
+                                <!-- <div class="tn-news">
                                     <div class="tn-img">
                                         <img src="img/news-350x223-3.jpg" />
                                     </div>
@@ -252,6 +246,14 @@
                                         <a href="">Lorem ipsum dolor sit amet</a>
                                     </div>
                                 </div>
+                                <div class="tn-news">
+                                    <div class="tn-img">
+                                        <img src="img/news-350x223-4.jpg" />
+                                    </div>
+                                    <div class="tn-title">
+                                        <a href="">Lorem ipsum dolor sit amet</a>
+                                    </div>
+                                </div> -->
                             </div>
                             <div id="popular" class="container tab-pane fade">
                                 <div class="tn-news">
@@ -279,8 +281,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="latest" class="container tab-pane fade">
-                                <?php $date = date("Y-m-d"); foreach ($user->getLatest($date) as $log) :?>
+                            <div id="featured" class="container tab-pane fade">
+                                <div class="tn-news">
+                                    <div class="tn-img">
+                                        <img src="img/news-350x223-1.jpg" />
+                                    </div>
+                                    <div class="tn-title">
+                                        <a href="">Lorem ipsum dolor sit amet</a>
+                                    </div>
+                                </div>
                                 <div class="tn-news">
                                     <div class="tn-img">
                                         <img src="img/news-350x223-2.jpg" />
@@ -289,8 +298,7 @@
                                         <a href="">Lorem ipsum dolor sit amet</a>
                                     </div>
                                 </div>
-                                <?php endforeach; ?>
-                                <!-- <div class="tn-news">
+                                <div class="tn-news">
                                     <div class="tn-img">
                                         <img src="img/news-350x223-3.jpg" />
                                     </div>
@@ -298,14 +306,6 @@
                                         <a href="">Lorem ipsum dolor sit amet</a>
                                     </div>
                                 </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -420,9 +420,9 @@
                             ?>
                             <div class="col-md-4">
                                 <div class="mn-img">
-                                    <img src="img/news-350x223-1.jpg " alt="<?=$key['image']?>" />
+                                    <img src="<?=str_replace('../../','',$key['image'])?>" alt="" />
                                     <div class="mn-title">
-                                        <a href="single-page.php?cont=<?=$key['entity_guid']?>"><?=$key['title']?></a>
+                                        <a href="single-page.php?cont=<?=$key['entityguid']?>"><?=$key['title']?></a>
                                     </div>
                                 </div>
                             </div>
@@ -498,16 +498,9 @@
                         <div class="mn-list">
                             <h2>Read More</h2>
                             <ul>
-                                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                                <li><a href="">Pellentesque tincidunt enim libero</a></li>
-                                <li><a href="">Morbi id finibus diam vel pretium enim</a></li>
-                                <li><a href="">Duis semper sapien in eros euismod sodales</a></li>
-                                <li><a href="">Vestibulum cursus lorem nibh</a></li>
-                                <li><a href="">Morbi ullamcorper vulputate metus non eleifend</a></li>
-                                <li><a href="">Etiam vitae elit felis sit amet</a></li>
-                                <li><a href="">Nullam congue massa vitae quam</a></li>
-                                <li><a href="">Proin sed ante rutrum</a></li>
-                                <li><a href="">Curabitur vel lectus</a></li>
+                                <?php foreach($user->readyMore() as $read) : ?>
+                                    <li><a href=""><?=$read['title']?></a></li>
+                                <?php endforeach ?>
                             </ul>
                         </div>
                     </div>
