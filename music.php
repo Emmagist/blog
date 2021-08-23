@@ -5,16 +5,12 @@
     require "libs/users.php";
     require "inc/head.php";
     require "inc/nav.php";
-
-    // var_dump($db->dateRange(TBL_BLOG_LIST, "*", ""));exit;
-    // print(floor(strtotime('2021-08-01')-time() / (60 * 60 * 24)) + 1);exit;
-    // echo date('Y-m-d') - '2021-08-15';exit;
 ?>
 
         
 
         <!-- Top News Start-->
-        <div class="top-news">
+        <!-- <div class="top-news">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 tn-left">
@@ -75,158 +71,24 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Top News End-->
+        <div class="col-md-4 col-md-offset-4 mt-5"><img src="img/ads-1.jpg" alt="Ads"></div>
 
-        <!-- Category News Start-->
-        <div class="cat-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>Sports</h2>
-                        <div class="row cn-slider">
-                            <?php foreach ($user->getSport() as $sport) : ?>
-                                <div class="col-md-6">
-                                    <div class="cn-img">
-                                        <img src="<?=str_replace('../../','',$sport['image'])?>" alt=""/ style="height: 150px;">
-                                        <div class="cn-title">
-                                            <a href="sport.php?sport=<?=$sport['entityguid']?>"><?=$sport['title']?></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                            <!-- <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2>Technology</h2>
-                        <div class="row cn-slider">
-                            <?php foreach ($user->getTechnology() as $tech) : ?>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="<?=str_replace('../../','',$tech['image'])?>" alt=""/>
-                                    <div class="cn-title">
-                                        <a href="tech.php?tech=<?=$tech['entityguid']?>"><?=$tech['title']?></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                            
-                            <!-- <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Category News End-->
-
-        <!-- Category News Start-->
-        <div class="cat-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>Business</h2>
-                        <div class="row cn-slider">
-                            <?php foreach ($user->getBusiness() as $business) : ?>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-5.jpg" alt="<?=$business['title']?>"/>
-                                    <div class="cn-title">
-                                        <a href="business?bsn=<?=$business['entityguid']?>"><?=$business['title']?></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                            <!-- <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2>Entertainment</h2>
-                        <div class="row cn-slider">
-                            <?php foreach ($user->getEntertainment() as $ent) : ?>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="<?=str_replace('../../','',$ent['image'])?>" alt=""/ style="height: 150px;">
-                                    <div class="cn-title">
-                                        <a href="entertain.php?ent=<?=$ent['entityguid']?>"><?=$ent['title']?></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                            <!-- <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Category News End-->
-        
         <!-- Tab News Start-->
-        <div class="tab-news">
+        <div class="tab-news mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="nav nav-pills nav-justified">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#latest">Latest News</a>
+                                <a class="nav-link active" data-toggle="pill" href="#latest">Latest Music</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#popular">Popular News</a>
+                                <a class="nav-link" data-toggle="pill" href="#popular">Popular Music</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#featured">Previous</a>
+                            <a class="nav-link" data-toggle="pill" href="#featured">Featured News</a>
                             </li>
                         </ul>
 
@@ -420,13 +282,13 @@
                     <div class="col-lg-9">
                         <div class="row">
                             <?php 
-                                foreach ($user->getAllCategory() as $key) : //$url=$key['category'];$get=$key['entityguid'];
+                                foreach ($user->getAllCategory() as $key) :
                             ?>
                             <div class="col-md-4">
                                 <div class="mn-img">
                                     <img src="<?=str_replace('../../','',$key['image'])?>" alt="" />
                                     <div class="mn-title">
-                                        <a href="single-page.php?en=<?=$key['entityguid']?>"><?=$key['title']?></a>
+                                        <a href="single-page.php?cont=<?=$key['entityguid']?>"><?=$key['title']?></a>
                                     </div>
                                 </div>
                             </div>
@@ -502,8 +364,8 @@
                         <div class="mn-list">
                             <h2>Read More</h2>
                             <ul>
-                                <?php foreach($user->readyMore() as $read) : $url = $read['category']; $get=$read['entityguid']?>
-                                    <li><a href="single-page.php?en=<?=$read['entityguid']?>"><?=$read['title']?></a></li>
+                                <?php foreach($user->readyMore() as $read) : ?>
+                                    <li><a href=""><?=$read['title']?></a></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>

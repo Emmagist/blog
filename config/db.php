@@ -151,9 +151,38 @@
         }
 
         public function dateFormat($date){
-            $timestamp = strtotime($date);
-            // $timestamp = preg_replace('-', ' ', $timestamp);
-            return date('d M Y', $timestamp);
+            return date('d M Y', strtotime($date));
+        }
+
+        public function dateRange($table, $field, $conditions){
+
+            // $rows = [];
+                $fields = trim($field);
+                $where = !empty($conditions) ? "WHERE" : "";
+                
+            $result = $this->query("SELECT " . $fields . " FROM " . $table . "  $where " . " BETWEEN ");
+            // var_dump($result);exit;
+            $count = $result->num_rows;
+            if ($count > 0) {
+              while ($row = $result->fetch_assoc()) {
+                $rows = $row[''];
+                
+                // $timestamp = strtotime($rows);
+                // $timestamp = preg_replace('-', ' ', $timestamp);
+                // $date = date('d M Y');
+                // if ($date < $r) {
+                //     $r;
+                // }
+                // for ($i=0; $i < $rows; $i++) { 
+                //     $rows[i];
+                // }
+              }
+              return $rows;
+            }
+
+            // $timestamp = strtotime($date);
+            // // $timestamp = preg_replace('-', ' ', $timestamp);
+            // return date('d M Y', $timestamp);
         }
 
         public function selectRandLimit($table, $field = '*', $conditions = "", $limit = ""){

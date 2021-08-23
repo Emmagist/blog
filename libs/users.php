@@ -4,60 +4,19 @@
     require_once "config/emailVerification.php";
 
     class Users {
-        // public function findUserByEmail($email){
-        //     global $db;
-        //     return $db->selectData(TBL_STUDENT, "*", "email = '$email'");
-        // }
-
-        // public function getAllUsers($token){
-        //     global $db;
-        //     return $db->selectData(TBL_STUDENT, "*", "user_guid ='$token'");
-        // }
-
-        // public function getCourses(){
-        //     global $db;
-        //     return $db->selectData(TBL_CLASS, "*");
-        // }
-
-        // public function getSchool(){
-        //     global $db;
-        //     return $db->selectData(TBL_SCHOOL, "*");
-        // }
-
-        // public  function  getAllClassesBySchoolId($id){
-        //     global  $db;
-        //     $rows = [];
-        //     $result = $db->query("SELECT * FROM classes
-        //                             INNER JOIN schools 
-        //                             ON classes.schoolid = schools.schoolid  
-        //                             WHERE classes.schoolid = '$id'");
-        //     if (!empty($result)) {
-        //         while ($row = $result->fetch_assoc()) {
-        //             $rows[] = $row;
-        //         }
-        //         return $rows;
-        //     }
-        // }
-
-        // public  function  getTotalAmountPurchased($order_id){
-        //     global  $db;
-        //     $rows = [];
-        //     $result = $db->query("SELECT * FROM total_amount
-        //                             INNER JOIN purchased_courses 
-        //                             ON total_amount.order_id = purchased_courses.order_id  
-        //                             WHERE total_amount.order_id = '$order_id'");
-        //     if (!empty($result)) {
-        //         while ($row = $result->fetch_assoc()) {
-        //             $rows[] = $row;
-        //         }
-        //         return $rows;
-        //     }
-        // }
-
-
         public function getAllCategory(){
             global $db;
             return $db->selectRandLimit(TBL_BLOG_LIST, "*", "status = '0'", "9");
+        }
+
+        public function getAllCategoryByToken($token){
+            global $db;
+            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "sub_category = '$token' AND status = '0'", "15");
+        }
+
+        public function getAllCategoryByName($name){
+            global $db;
+            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "category = '$name' AND status = '0'", "5");
         }
 
         public function getTechnology(){
@@ -129,24 +88,58 @@
             global $db;
 
             return $db->selectRandLimit(TBL_BLOG_LIST, "*", "log = '$date' AND category = 'news'", "3");
-            // $rows = [];
-            // $result = $db->query("SELECT * FROM bloglist
-            //                         INNER JOIN blog_category 
-            //                         ON bloglist.category = blog_category.name 
-            //                         WHERE bloglist.category = 'news'
-            //                         AND  bloglist.log = '$date'
-            //                         ORDER BY RAND() LIMIT 3");
-            // if (!empty($result)) {
-            //     while ($row = $result->fetch_assoc()) {
-            //         $rows[] = $row;
-            //     }
-            //     return $rows;
-            // }
+        }
+
+        public function getLatestNews($date){
+            global $db;
+            return $db->selectRandLimit(TBL_BLOG_LIST, "*", "log = '$date' AND category = 'news'", "5");
+        }
+
+        public function getSingleNews($news){
+            global $db;
+            return $db->selectData(TBL_BLOG_LIST, "*", "entityguid = '$news'");
         }
 
         public function readyMore(){
             global $db;
             return $db->selectLimitAsc(TBL_BLOG_LIST, "*", "status = '0'", "title", "10");
+        }
+
+        public function getSubCategoryByToken($token){
+            global $db;
+
+            return $db->selectData(TBL_SUB_CATEGORY, "*", "entity_guid = '$token'");
+        }
+
+        public function getNewsCategory(){
+            global $db;
+            $rows = [];
+            $result = $db->query("SELECT * FROM blog_category
+                                    INNER JOIN blog_sub_category 
+                                    ON blog_category.entity_guid = blog_sub_category.category 
+                                    WHERE blog_category.category = 'news'
+            ");
+            if (!empty($result)) {
+                while ($row = $result->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+                return $rows;
+            }
+        }
+        public function getRelatedCategory($category){
+            global $db;
+            $rows = [];
+            $result = $db->query("SELECT * FROM blog_category
+                                    INNER JOIN blog_sub_category 
+                                    ON blog_category.entity_guid = blog_sub_category.category 
+                                    WHERE blog_category.category = '$category'
+            ");
+            if (!empty($result)) {
+                while ($row = $result->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+                return $rows;
+            }
         }
 
         public function getAllSchoolsLimited(){
@@ -169,6 +162,23 @@
             }else {
                 $db->saveData(TBL_PAGE_COUNT, "ip = '$ip', count = '$count', log = '$date'");
             }
+        }
+
+        public function getUrl($url, $get){
+            if ($url == 'news') {
+                echo "news-page.php?news=".$get;
+            }else {
+                echo "single-page.php?en=".$get;
+            }
+            // elseif ($url == 'news') {
+            //     echo "news-page.php?news=".$get;
+            // }elseif($url == 'business'){
+            //     echo 'business.php?business='.$get;
+            // }elseif($url == 'music'){
+            //     echo 'music.php?music='.$get;
+            // }elseif($url == 'video'){
+            //     echo 'video.php?video='.$get;
+            // }
         }
     }
     $user = new Users;
