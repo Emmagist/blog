@@ -19,12 +19,13 @@
 
 
     // Tables
-    define("TBL_BLOG_LIST",     "bloglist");
-    define("TBL_BLOG_CATEGORY", "blog_category");
-    define("TBL_BLOG_COMMENT",  "blog_comment");
-    define("TBL_COMMENT_REPLY", "blog_comment_reply");
-    define("TBL_PAGE_COUNT",    "page_count");
-    define("TBL_ADMIN_SYSTEM",  "admin_system");
-    define("TBL_SUB_CATEGORY",  "blog_sub_category");
+    define("TBL_BLOG_LIST",              "bloglist");
+    define("TBL_BLOG_CATEGORY",          "blog_category");
+    define("TBL_BLOG_COMMENT",           "blog_comment");
+    define("TBL_COMMENT_REPLY",          "blog_comment_reply");
+    define("TBL_PAGE_COUNT",             "page_count");
+    define("TBL_ADMIN_SYSTEM",           "admin_system");
+    define("TBL_SUB_CATEGORY",           "blog_sub_category");
+    define("TBL_ENTERTAINMENT_CATEGORY", "blog_music_category");
 
 ?>

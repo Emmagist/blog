@@ -244,6 +244,24 @@
         public function remote_Addr(){
             return $_SERVER['REMOTE_ADDR'];
         }
+
+        public function getDateTime(){
+            return $this->query("SELECT * FROM bloglist where log >= date_add(date(), -7, getdate())");
+        }
+
+        public function getPreviousDate($table, $field = '*', $conditions = ""){
+            $rows = [];
+            $fields = trim($field);
+            $where = !empty($conditions) ? "WHERE" : "";
+            $result = $this->query("SELECT" . $fields . " FROM " . $table . " $where " . " $conditions ");
+            var_dump($result);exit;
+            if (!empty($result)) {
+                while ($row = $result->fetch_assoc()) {
+                   $rows[] = $row;
+                }
+                return $rows; //date_add(day, -7, getdate())
+            }
+        }
     }
     $db = new Database;
 

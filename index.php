@@ -9,6 +9,8 @@
     // var_dump($db->dateRange(TBL_BLOG_LIST, "*", ""));exit;
     // print(floor(strtotime('2021-08-01')-time() / (60 * 60 * 24)) + 1);exit;
     // echo date('Y-m-d') - '2021-08-15';exit;
+
+    //$db->getPreviousDate(TBL_BLOG_LIST, "*", "log >= date_add(date(), -7, getdate())", "7");
 ?>
 
         

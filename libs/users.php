@@ -180,6 +180,10 @@
             //     echo 'video.php?video='.$get;
             // }
         }
+
+        // public function getPreviousDays(){
+        //     getdate()
+        // }
     }
     $user = new Users;
 
