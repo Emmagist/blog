@@ -38,7 +38,7 @@
                             <div class="sn-content">
                                 <h1 class="sn-title"><?=$getNews['title']?></h1>
                                 <p>
-                                <?=$getNews['content']?>
+                                <?=html_entity_decode($getNews['content'])?>
                                 </p>
                                 <!-- <p>
                                     Mauris eu pulvinar tellus, eu luctus nisl. Pellentesque suscipit mi eu varius pulvinar. Aenean vulputate, massa eget elementum finibus, ipsum arcu commodo est, ut mattis eros orci ac risus. Suspendisse ornare, massa in feugiat facilisis, eros nisl auctor lacus, laoreet tempus elit dolor eu lorem. Nunc a arcu suscipit, suscipit quam quis, semper augue.

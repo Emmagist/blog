@@ -12,8 +12,21 @@
 
     //$db->getPreviousDate(TBL_BLOG_LIST, "*", "log >= date_add(date(), -7, getdate())", "7");
 ?>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        
+ <style>
+     .on-scroll-show{
+         display: none;
+     }
+     .fa-remove:hover{
+         color: #FF6F61;
+     }
+ </style>
+
+        <div class="on-scroll-show mr-1" id="on-scroll" style="background: gray; width:20%;float:right; margin-top:20px">
+            <img src="img/news-350x223-1.jpg" alt="" style="width: 70px;height:60px">
+            <h5 class="mt-3 ml-1 text-white">Invest and Earn 20% <i class="fa fa-remove text-danger remove-ad"></i></h5>
+        </div>
 
         <!-- Top News Start-->
         <div class="top-news">
@@ -506,7 +519,7 @@
                             <ul>
                                 <?php foreach($user->readyMore() as $read) : $url = $read['category']; $get=$read['entityguid']?>
                                     <li><a href="single-page.php?en=<?=$read['entityguid']?>"><?=$read['title']?></a></li>
-                                <?php endforeach ?>
+                                <?php endforeach ?> 
                             </ul>
                         </div>
                     </div>
@@ -516,3 +529,12 @@
         <!-- Main News End-->
 
 <?php require "inc/footer.php"; ?>
+
+<script>
+    $(window).scrollTop(function () {
+        // alert('yesss');
+        $('#on-scroll').addClass('d-flex');
+        $('#on-scroll').fadeToggle();
+
+    })
+</script>
