@@ -3,7 +3,7 @@
 
     require "inc/head.php";
     require "inc/nav.php";
-    require "libs/users.php";
+    // require "libs/users.php";
     // var_dump($db->referralCode());exit;
 ?>
 
@@ -21,7 +21,6 @@
         font-size: 30px;
         font-weight: bold;
         margin-left: 40px;
-
     }
 
     .dashboard-span{
@@ -78,6 +77,11 @@
         padding: 20px;
         /* border-radius: 4px; */
     }
+
+    #copy-button:hover{
+        cursor: pointer;
+        color: #FF6F61;
+    }
 </style>
     
     <!-- Single News Start-->
@@ -93,7 +97,7 @@
                             <ul>
                                 <li class="sidebar-li mb-3"><strong>Ogundipe Olusegun</strong></li>
                                 <li class="sidebar-li mb-3">Email: <strong>example@gmail.com</strong></li>
-                                <li  class="mb-3">Referral Code: <span class="text-primary"><a href="http://localhost/blog/inv/invest.php?A19S38">A19S38</a></span></li>
+                                <li  class="mb-3">Referral Code: <span class="text-primary"><a href="http://localhost/blog/inv/invest.php?A19S38" title="Click to copy">A19S38</a> <a class="btn btn-transparent" id="copy-button">Copy</a></span></li>
                                 <li  class="btn btn-success mb-3">Invest</li>
                                 <li  class="btn btn-success mb-3">Withdraw</li><br>
                                 <li  class="btn btn-warning mb-3">History</li>

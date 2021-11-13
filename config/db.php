@@ -262,6 +262,11 @@
                 return $rows; //date_add(day, -7, getdate())
             }
         }
+
+        public function referralCode() { 
+            $str_result = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321'; 
+            return substr(str_shuffle($str_result), 0, 6); 
+        }
     }
     $db = new Database;
 

@@ -1,7 +1,7 @@
 <?php
 
-    require "../config/db.php";
-    require_once "../config/emailVerification.php";
+    require "config/db.php";
+    // require_once "../config/emailVerification.php";
 
     class Users {
 

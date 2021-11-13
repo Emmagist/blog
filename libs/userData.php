@@ -1,6 +1,6 @@
 <?php
 
-    require_once "../config/db.php";
+    require_once "users.php";
 
     if (isset($_GET['reg'])) {
         $pg = $_GET['reg'];

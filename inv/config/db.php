@@ -245,7 +245,6 @@
             return $_SERVER['REMOTE_ADDR'];
         }
 
-        //get data from one date range to another
         public function getDateTime(){
             return $this->query("SELECT * FROM bloglist where log >= date_add(date(), -7, getdate())");
         }
@@ -265,7 +264,7 @@
         }
 
         public function referralCode() { 
-            $str_result = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'; 
+            $str_result = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz0987654321'; 
             return substr(str_shuffle($str_result), 0, 6); 
         }
     }
