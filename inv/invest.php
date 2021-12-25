@@ -103,6 +103,7 @@
                                 <li  class="btn btn-warning mb-3">History</li>
                                 <li  class="mb-3">News Earned: <span><strong>&#8358;100000</strong></span></li>
                                 <li  class="mb-3">Referral Bonus: <span><strong>&#8358;100000</strong></span></li>
+                                <li  class="mb-3">Invested: <span><strong>&#8358;200,000</strong></span></li>
                             </ul>
                         </nav>
                     </div>
