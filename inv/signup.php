@@ -1,3 +1,4 @@
+<?php require 'lib/investorProcess.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,13 +29,17 @@
 
     <div class="col-md-4 offset-md-4 mt-5 border p-5 mb-5">
         <h4 style="color: #FF6F61;">Signup and Earn 20% of Your Investment</h4>
-        <form action="" method="post" id="testForm">
-            <div class="form-group"><input type="text" class="form-control" name="full_n"></div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <form action="" method="post" id="regForm" enctype="multipart/form-data">
-            <div class="form-group"><input type="text" class="form-control" placeholder="Full Name" name="full_name"></div>
-            <!-- <input type="text" name="name"> -->
+        <form action="libs/investorProcess.php" method="post" id="regFo" enctype="multipart/form-data">
+            <div class="form-group">
+                <?php
+                    require "inc/error-message.php";
+                    require "inc/success-message.php";
+                ?>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Full Name">
+                <!-- <input type="text" class="form-control" placeholder="Full Name" name="full_name"> -->
+            </div>
             <div class="form-group"><input type="text" class="form-control" placeholder="Username" name="user_name"></div>
             <?php if(isset($_GET['ref'])) : ?>
                 <div class="form-group"><input type="hidden" class="form-control" value="<?=$_GET['ref']?>" name="ref"></div>
@@ -42,19 +47,19 @@
             <div class="form-group"><input type="email" class="form-control" placeholder="Email" name="email"></div>
             <div class="form-group"><input type="tel" class="form-control" placeholder="Phone Number" name="tel"></div>
             <div class="form-group"><input type="password" class="form-control" placeholder="Password" name="password"></div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input type="file" class="" placeholder="Email" name="file_upload">
                 <small class="text-danger">jpg,png&jpeg</small>
-            </div>
-            <div class="form-group"><button type="submit" class="btn">Register</button></div>
+            </div> -->
+            <div class="form-group"><button type="submit" class="btn" name="register">Register</button></div>
         </form>
     </div>
 
     <!-- Payment Modal -->
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="paymentButton" style="display: none;">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=exampleModal"#" id="paymentButton" style="display: none;">
   Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,12 +105,12 @@
 <?php require "inc/footer.php"; ?>
 
 <script>
-    $('#testForm').submit(function (e) {
+    $('#regForm').submit(function (e) {
         // alert('Yesr/r')
         e.preventDefault();
         var formData = new FormData(); //alert(formData)
         $.ajax({
-                url: 'userProcess.php?reg=404',
+                url: 'libs/investorProcess.php?reg=404',
                 type: 'POST',
                 data: formData,
                 contentType: false,
@@ -113,6 +118,9 @@
                 cache: false,
                 dataType: "json",
                 success: function (params) {
+                    if (params) {
+                        alert("Params");
+                    }
                     // if (params) {
                     //    $('#paymentButton').click();
                     // }

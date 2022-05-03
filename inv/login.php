@@ -1,3 +1,4 @@
+<?php require 'lib/investorProcess.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,12 +29,12 @@
 
 <div class="col-md-4 offset-md-4 mt-5 border p-5 mb-5">
     <h4 class="text-center">Login to Your Account</h4>
-    <form action="" id="loginForm">
+    <form action="" method="POST" id="loginFo">
         <div class="form-group"><input type="text" class="form-control" placeholder="Email/Username" name="email"></div>
         <div class="form-group"><input type="password" class="form-control" placeholder="Password" name="password"></div>
-        <div class="form-group"><button class="form-control btn btn-primary">Login</button></div>
+        <div class="form-group"><button type="submit" name="login" class="form-control btn btn-primary">Login</button></div>
     </form>
-    <p>No account yet? <a href="">Signup </a>here.</p>
+    <p>No account yet? <a href="signup.php">Signup </a>here.</p>
 </div>
 
 

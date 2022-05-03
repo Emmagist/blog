@@ -103,7 +103,7 @@ require "inc/nav.php";
 <div class="single-news">
     <div class="container-fluid">
         <div class="container-divider">
-            <h3 class="dashboard-h3">Investment</h3><span><a href="logout.php" class="btn btn-danger logout">Logout</a></span><div class="dashboard-span"></div>
+            <h3 class="dashboard-h3">Withdrawer Page</h3><span><a href="#" class="logout border-rounded"  data-toggle="drop-down" data-target="#drop-down"><i class="fa fa-user"></i></a></span><div class="dashboard-span"></div>
             <div class="main-container">
                 <div class="main-bar">
                     <h3>Invest your money while sleeping</h3>
@@ -113,7 +113,7 @@ require "inc/nav.php";
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatibus, labore non, omnis ipsa totam amet impedit sequi quidem perspiciatis expedita, neque ab autem. Aspernatur, possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem animi ullam asperiores quisquam nam? Amet eaque dolorum quos porro, itaque corrupti rem delectus sit, ratione magni id odit maxime natus!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatib,</p>
                     <h4>How to invest</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatibus, labore non, omnis ipsa totam amet impedit sequi quidem perspiciatis expedita, neque ab autem. Aspernatur, possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem animi ullam asperiores quisquam nam? Amet eaque dolorum quos porro, itaque corrupti rem delectus sit, ratione magni id odit maxime natus!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatibus,</p>
-                    <button type="button" class="btn btn-primary mb-3 mt-3" data-toggle="modal" data-target="#exampleModal">Invest Now</button>
+                    <button type="button" class="btn btn-primary mb-3 mt-3" data-toggle="modal" data-target="#exampleModal">Withdraw</button>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatibus, labore non, omnis ipsa totam amet impedit sequi quidem perspiciatis expedita, neque ab autem. Aspernatur, possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem animi ullam asperiores quisquam nam? Amet eaque dolorum quos porro, itaque corrupti rem delectus sit, ratione magni id odit maxime natus!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam incidunt architecto provident. Laudantium mollitia voluptas doloremque reiciendis aperiam ipsa, a illum autem ex distinctio maiores suscipit itaque assumenda fuga quo! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quo error ducimus cumque voluptatib.</p>
                 </div>
                 <div></div>
@@ -150,62 +150,45 @@ Launch demo modal
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Invest and Earn</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Withdrawal Slip</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="paymentForm">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input class="form-control" type="email" id="email-address" required />
+                <form action="" method="post">
+                    <div><input type="text" placeholder="Account Number" name="account_number" class="form-control" /></div>
+                    <div><input type="text" placeholder="Account Name" name="account_name" class="form-control" /></div>
+                    <div><input type="hidden" placeholder="Card Name" name="token" value="<?=$token?>" class="form-control" /></div>
+                    <div class="d-flex">
+                        <select name="bank" id="" class="form-control">
+                            <option value="">Select Bank</option>
+                            <option value="gtb">GTB</option>
+                            <option value="zenith">Zenith Bank</option>
+                            <option value="wema">Wema Bank</option>
+                            <option value="uba">United Bank of Africa</option>
+                            <option value="polaris">Polaris Bank</option>
+                            <option value="access">Access Bank</option>
+                            <option value="access">Access Diamond Bank</option>
+                            <option value="fcmb">First City Monument Bank</option>
+                            <option value="heritage">Heritage Bank</option>
+                            <option value="union">Union Bank</option>
+                            <option value="first_bank">First Bank</option>
+                            <option value="stambic">Stambic Bank</option>
+                            <option value="stanling">Stanlin Bank</option>
+                            <option value="optus_bank">Optus Bank</option>
+                            <option value="opay">Opay  Micro-finance Bank</option>
+                            <option value="kuda">Kuda Micro-finance Bank</option>
+                            <option value="piggyvest">Piggyvest Micro-finance Bank</option>
+                        </select>
+                        <input type="text" placeholder="Amount" name="amount" class="form-control ml-3" />
                     </div>
-                    <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input class="form-control" type="tel" id="amount" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input class="form-control" type="text" id="first-name" />
-                    </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input class="form-control" type="text" id="last-name" />
-                    </div>
-                    <div class="form-submit">
-                        <button class="btn btn-success btn-lg" type="submit" onclick="payWithPaystack()" style="background:green"> Pay </button>
-                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="invest">Invest</button>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
 <?php require "inc/footer.php"; ?>
-<script src="https://js.paystack.co/v1/inline.js"></script>
-
-<script>
-    const paymentForm = document.getElementById('paymentForm');
-    paymentForm.addEventListener("submit", payWithPaystack, false);
-    function payWithPaystack(e) {
-        e.preventDefault();
-        let handler = PaystackPop.setup({
-            key: 'pk_test_bd98b5fff1cad78fba8e39c66927f978c0219717', // Replace with your public key
-            email: document.getElementById("email-address").value,
-            amount: document.getElementById("amount").value * 100,
-            ref: 'Inv'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-            // label: "Optional string that replaces customer email"
-            onClose: function(){
-                alert('Transaction cancelled.');
-            },
-            callback: function(response){
-                let message = 'Payment complete! Reference: ' + response.reference ;
-                // alert(message);
-                location.href = "verify.php?verify="+response.reference
-            }
-        });
-        handler.openIframe();
-    }
-</script>
